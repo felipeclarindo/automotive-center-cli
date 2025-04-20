@@ -12,7 +12,7 @@ This program is a command-line application to interact with an API of a fictiona
 - To request an estimate for a car, enter the car brand name.
 - To exit the program, select the exit option and confirm.
 
-## How to Run the Program
+## Steps to run
 
 1. Clone the repository:
 

@@ -12,7 +12,7 @@ Este programa é uma aplicação de linha de comando para interagir com uma API 
 - Para buscar um orçamento para um carro, informe a marca do carro.
 - Para sair do programa, escolha a opção de saída e confirme.
 
-## Como executar o programa
+## Passos para executar
 
 1. Clone o repositório:
 
