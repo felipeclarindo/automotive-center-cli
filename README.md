@@ -1,65 +1,74 @@
-# Centro Automotivo Porto
-Este programa é uma aplicação de linha de comando para interagir com uma API de um centro automotivo fictício. Ele permite buscar problemas comuns em carros, mostrar os carros que costumam dar mais problemas, buscar orçamentos e sair do programa.
+🌍 [Leia em Português](README.pt.md)
 
+# Porto Automotive Center
 
-## Como executar o programa
+This program is a command-line application to interact with an API of a fictional automotive center. It allows you to search for common car issues, view the cars that most frequently have problems, request estimates, and exit the program.
 
+## How to Use
 
-1. Clone o repositório do Projeto para sua máquina:
+- When starting the program, choose one of the menu options by typing the corresponding number and pressing Enter.
+- To search for common problems in a car, type the car brand name.
+- To show the cars that usually present more issues, select the corresponding option.
+- To request an estimate for a car, enter the car brand name.
+- To exit the program, select the exit option and confirm.
+
+## How to Run the Program
+
+1. Clone the repository:
 
 ```bash
-git clone https://github.com/felipeclarindo/automotive-center.git
+git clone https://github.com/felipeclarindo/automotive-center-cli.git
 ```
 
-2. Instale as dependencias do projeto:
+2. Enter the directory:
 
-```bash 
+```bash
+cd automotive-center-cli
+```
+
+3. Create a Virtual Environment:
+
+```bash
+python -m venv .venv
+```
+
+4. Activate the Virtual Environment:
+
+```bash
+cd .venv/Scripts
+activate
+```
+
+5. Install the dependencies:
+
+```bash
 pip install -r requirements.txt
 ```
 
-3. Navegue até a pasta da api do projeto:
-
-```bash 
-cd automotive-center/src/api
-```
-
-4. Inicie a API: 
-
-```bash 
-python api.py
-```
-
-5. Navegue até a página principal
+6. Start the API:
 
 ```bash
-cd automotive-center
+python src/api/api.py
 ```
 
-6. Execute o programa:
+7. Run the application:
 
 ```bash
 python main.py
 ```
 
-## Como usar
-- Ao iniciar o programa, escolha uma das opções do menu digitando o número correspondente e pressionando Enter.
-- Para buscar problemas comuns em um carro, digite o nome da marca do carro.
-- Para mostrar os carros que costumam dar mais problemas, escolha a opção correspondente.
-- Para buscar um orçamento para um carro, informe a marca do carro.
-- Para sair do programa, escolha a opção de saída e confirme.
+## Contribution
 
+Contributions are welcome! If you have suggestions for improvements, feel free to open an issue or submit a pull request.
 
-## Contribuições
+## Author
 
-Contribuições são bem-vindas! Se você encontrar algum problema ou tiver sugestões de melhorias, sinta-se à vontade para abrir uma issue ou enviar um pull request.
+**Felipe Clarindo**
 
-## Autor
+- [LinkedIn](https://www.linkedin.com/in/felipeclarindo)
+- [Instagram](https://www.instagram.com/lipethecoder)
+- [GitHub](https://github.com/felipeclarindo)
 
-Desenvolvido por **Felipe Clarindo**.  
-  - [LinkedIn](https://www.linkedin.com/in/felipe-clarindo-934578289/)  
-  - [Instagram](https://www.instagram.com/lipethegoat)  
-  - [GitHub](https://github.com/felipeclarindo)  
+## License
 
-## Licença
-
-Este projeto está licenciado sob a [GNU Affero License](https://www.gnu.org/licenses/agpl-3.0.html).
+This project is licensed under the [GNU Affero License](https://www.gnu.org/licenses/agpl-3.0.html).
