@@ -1,6 +1,7 @@
 from flask import Flask, jsonify
 
-carsAndProblems = {
+
+cars_and_problems = {
     "Toyota": "Problemas de queima de óleo em alguns modelos, resultando em consumo excessivo de óleo entre as trocas de óleo programadas.",
     "Honda": "Falhas na transmissão automática em alguns modelos, resultando em solavancos, trancos ou mau funcionamento geral da transmissão.",
     "Ford": "Problemas de confiabilidade da transmissão automática de dupla embreagem Powershift em alguns modelos, levando a solavancos, trancos ou falhas na transmissão.",
@@ -20,31 +21,31 @@ carsAndProblems = {
     "Jaguar": "Problemas de confiabilidade elétrica em alguns modelos, incluindo falhas no sistema de infotainment, sistemas de entretenimento ou falhas nos controles eletrônicos.",
     "Land Rover": "Problemas de confiabilidade do sistema de suspensão a ar em alguns modelos, incluindo vazamentos de ar, falhas na altura de condução ou falhas no sistema.",
     "Porsche": "Problemas de confiabilidade do sistema de transmissão PDK (Porsche Doppelkupplung) em alguns modelos, incluindo solavancos, trancos ou falhas de operação.",
-    "Ferrari": "Problemas de confiabilidade do sistema de transmissão F1 (Ferrari Formula One) em alguns modelos, incluindo solavancos, trancos ou falhas de operação."
+    "Ferrari": "Problemas de confiabilidade do sistema de transmissão F1 (Ferrari Formula One) em alguns modelos, incluindo solavancos, trancos ou falhas de operação.",
 }
 
-carsAndPrices = {
-    "Toyota" : "R$ 500 a R$ 5.000",
-    "Honda" : "R$ 1.000 a R$ 8.000",
-    "Ford" : "R$ 1.500 a R$ 10.000",
-    "Chevrolet" : "R$ 300 a R$ 3.000",
-    "Volkswagen" : "R$ 800 a R$ 6.000",
-    "BMW" : "R$ 800 a R$ 6.000",
-    "Mercedes" : "R$ 800 a R$ 6.000",
-    "Audi" : "R$ 1.500 a R$ 10.000",
-    "Nissan" : "R$ 1.200 a R$ 9.000",
-    "Hyundai" : "R$ 500 a R$ 4.000",
-    "Kia" : "R$ 800 a R$ 6.000",
-    "Subaru" : "R$ 1.200 a R$ 9.000",
-    "Mazda" : "R$ 700 a R$ 5.000",
-    "Tesla" : "R$ 700 a R$ 5.000",
-    "Fiat" : "R$ 1.000 a R$ 8.000",
-    "Volvo" : "R$ 1.000 a R$ 8.000",
-    "Jaguar" : "R$ 700 a R$ 5.000",
-    "Land Rover" : "R$ 1.500 a R$ 10.000",
-    "Porsche" : "R$ 2.000 a R$ 15.000",
-    "Ferrari" : "R$ 2.000 a R$ 15.000"
-    }
+cars_and_prices = {
+    "Toyota": "R$ 500 a R$ 5.000",
+    "Honda": "R$ 1.000 a R$ 8.000",
+    "Ford": "R$ 1.500 a R$ 10.000",
+    "Chevrolet": "R$ 300 a R$ 3.000",
+    "Volkswagen": "R$ 800 a R$ 6.000",
+    "BMW": "R$ 800 a R$ 6.000",
+    "Mercedes": "R$ 800 a R$ 6.000",
+    "Audi": "R$ 1.500 a R$ 10.000",
+    "Nissan": "R$ 1.200 a R$ 9.000",
+    "Hyundai": "R$ 500 a R$ 4.000",
+    "Kia": "R$ 800 a R$ 6.000",
+    "Subaru": "R$ 1.200 a R$ 9.000",
+    "Mazda": "R$ 700 a R$ 5.000",
+    "Tesla": "R$ 700 a R$ 5.000",
+    "Fiat": "R$ 1.000 a R$ 8.000",
+    "Volvo": "R$ 1.000 a R$ 8.000",
+    "Jaguar": "R$ 700 a R$ 5.000",
+    "Land Rover": "R$ 1.500 a R$ 10.000",
+    "Porsche": "R$ 2.000 a R$ 15.000",
+    "Ferrari": "R$ 2.000 a R$ 15.000",
+}
 
 cars = [
     "Toyota",
@@ -67,54 +68,87 @@ cars = [
     "Land Rover",
     "Porsche",
     "Ferrari",
-    ]
+]
 
-carsMoreProblems = {
-    "Fiat" : "Marea",
-    "Ford" : "Fiesta",
-    "Chevrolet" : "Agile",
-    "Renault" : "Sandero",
-    "Volkswagen" : "Gol",
-    "Fiat" : "Palio",
-    "Citroën" : "C3",
-    "Peugeot" : "206",
-    "Renault" : "Logan",
-    "Fiat" : "Siena",
+cars_more_problems = {
+    "Fiat": "Marea",
+    "Ford": "Fiesta",
+    "Chevrolet": "Agile",
+    "Renault": "Sandero",
+    "Volkswagen": "Gol",
+    "Fiat": "Palio",
+    "Citroën": "C3",
+    "Peugeot": "206",
+    "Renault": "Logan",
+    "Fiat": "Siena",
 }
 
 app = Flask(__name__)
 
-#Rota principal com informações da minha API.
-@app.route("/")
-def index():
-    return jsonify({
-        "message": "Welcome to my API.",
-        "endpoints": {
-            "/cars": "Return a car list",
-            "/cars-problems": "Return a problems list",
-            "/cars-prices" : "Return a price list",
-            }
-        })
 
-# Rota que retorna uma lista com os carros.
+@app.route("/")
+def index() -> jsonify:
+    """
+    Function to return the api description.
+
+    Returns:
+        jsonify: A JSON object with the api description.
+    """
+    return jsonify(
+        {
+            "message": "Welcome to my API.",
+            "endpoints": {
+                "/cars": "Return a car list",
+                "/cars-problems": "Return a problems list",
+                "/cars-prices": "Return a price list",
+            },
+        }
+    )
+
+
 @app.route("/cars")
-def showCars():
+def show_cars() -> jsonify:
+    """
+    Function to return a list with the cars.
+
+    Returns:
+        jsonify: A JSON object with the car list.
+    """
     return jsonify(cars)
 
-# Rota que retorna um dicionario com os carros que mais dão problema e a marca de cada carro.
+
 @app.route("/cars/more-problems")
-def showCarsMoreProblem():
-    return jsonify(carsMoreProblems)
+def show_cars_more_problems() -> jsonify:
+    """
+    Function that returns a dictionary with the car and the most common problem.
 
-# Rota que retorna um dicionario com o carro e o problema mais comum.
+    Returns:
+        jsonify: A JSON object with the car and the most common problem.
+    """
+    return jsonify(cars_more_problems)
+
+
 @app.route("/cars/problems")
-def showCarsAndProblems():
-    return jsonify(carsAndProblems)
+def show_cars_and_problems() -> jsonify:
+    """
+    Function that returns a dictionary with the car and the most common problem.
 
-# Rota que retorna um dicionario com o carro e os preços de orçamento medio.
+    Returns:
+        jsonify: A JSON object with the car and the most common problem.
+    """
+    return jsonify(cars_and_problems)
+
+
 @app.route("/cars/prices")
-def showCarsAndPrices():
-    return jsonify(carsAndPrices)
+def showcars_and_prices() -> jsonify:
+    """
+    Function that returns a dictionary with the car and the price range.
 
-if __name__ == "__main__": 
+    Returns:
+        jsonify: A JSON object with the car and the price range.
+    """
+    return jsonify(cars_and_prices)
+
+
+if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)
